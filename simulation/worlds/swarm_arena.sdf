@@ -1,0 +1,251 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="swarm_arena">
+
+    <!-- Physics -->
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <!-- Plugins -->
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+
+    <!-- Lighting -->
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground plane -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>12 12</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>12 12</size></plane></geometry>
+          <material>
+            <ambient>0.85 0.85 0.85 1</ambient>
+            <diffuse>0.85 0.85 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!--
+      Arena layout (10m x 10m):
+
+        (-5,5) _____________________________ (5,5)
+              |                               |
+              |   A(spawn)   B(spawn)         |
+              |   (-3,3)     (-1,3)           |
+              |                               |
+              |         WALL (top)            |
+              |     ==================        |
+              |                               |
+              |       [NARROW PASSAGE]        |  <-- 0.6m gap at center
+              |                               |
+              |     ==================        |
+              |         WALL (bottom)         |
+              |                               |
+              |                    C(spawn)   |
+              |                    (3,0)      |
+              |                               |
+              |              D(spawn)         |
+              |              (1,-3)           |
+              |_______________________________|
+        (-5,-5)                            (5,-5)
+    -->
+
+    <!-- ========== BOUNDARY WALLS ========== -->
+
+    <!-- North wall -->
+    <model name="wall_north">
+      <static>true</static>
+      <pose>0 5 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.1 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.1 0.5</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.4 0.4 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- South wall -->
+    <model name="wall_south">
+      <static>true</static>
+      <pose>0 -5 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.1 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.1 0.5</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.4 0.4 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- East wall -->
+    <model name="wall_east">
+      <static>true</static>
+      <pose>5 0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 10 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 10 0.5</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.4 0.4 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- West wall -->
+    <model name="wall_west">
+      <static>true</static>
+      <pose>-5 0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 10 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 10 0.5</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.4 0.4 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== NARROW PASSAGE (center divider with 0.6m gap) ========== -->
+    <!-- Two wall segments with a gap in the middle -->
+
+    <!-- Passage wall — left segment (from x=-5 to x=-0.3) -->
+    <model name="passage_wall_left">
+      <static>true</static>
+      <pose>-2.65 0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>4.7 0.15 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>4.7 0.15 0.5</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient><diffuse>0.8 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Passage wall — right segment (from x=0.3 to x=5) -->
+    <model name="passage_wall_right">
+      <static>true</static>
+      <pose>2.65 0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>4.7 0.15 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>4.7 0.15 0.5</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient><diffuse>0.8 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== YIELD ZONE MARKERS (visual only, no collision) ========== -->
+
+    <!-- Yield zone — north side of passage -->
+    <model name="yield_zone_north">
+      <static>true</static>
+      <pose>0 0.8 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.8 0.6 0.002</size></box></geometry>
+          <material><ambient>1.0 0.9 0.2 0.5</ambient><diffuse>1.0 0.9 0.2 0.5</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Yield zone — south side of passage -->
+    <model name="yield_zone_south">
+      <static>true</static>
+      <pose>0 -0.8 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.8 0.6 0.002</size></box></geometry>
+          <material><ambient>1.0 0.9 0.2 0.5</ambient><diffuse>1.0 0.9 0.2 0.5</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== ROBOTS ========== -->
+
+    <!-- Robot A — Sender (top-left) -->
+    <include>
+      <name>robot_a</name>
+      <pose>-3 3 0 0 0 0</pose>
+      <uri>model://swarm_robot</uri>
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.34</wheel_separation>
+        <wheel_radius>0.05</wheel_radius>
+        <topic>/robot_a/cmd_vel</topic>
+        <odom_topic>/robot_a/odom</odom_topic>
+      </plugin>
+    </include>
+
+    <!-- Robot B — Carrier (near A) -->
+    <include>
+      <name>robot_b</name>
+      <pose>-1 3 0 0 0 0</pose>
+      <uri>model://swarm_robot</uri>
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.34</wheel_separation>
+        <wheel_radius>0.05</wheel_radius>
+        <topic>/robot_b/cmd_vel</topic>
+        <odom_topic>/robot_b/odom</odom_topic>
+      </plugin>
+    </include>
+
+    <!-- Robot C — Independent worker (right side) -->
+    <include>
+      <name>robot_c</name>
+      <pose>3 0 0 0 0 0</pose>
+      <uri>model://swarm_robot</uri>
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.34</wheel_separation>
+        <wheel_radius>0.05</wheel_radius>
+        <topic>/robot_c/cmd_vel</topic>
+        <odom_topic>/robot_c/odom</odom_topic>
+      </plugin>
+    </include>
+
+    <!-- Robot D — Receiver (bottom-right) -->
+    <include>
+      <name>robot_d</name>
+      <pose>1 -3 0 0 0 0</pose>
+      <uri>model://swarm_robot</uri>
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.34</wheel_separation>
+        <wheel_radius>0.05</wheel_radius>
+        <topic>/robot_d/cmd_vel</topic>
+        <odom_topic>/robot_d/odom</odom_topic>
+      </plugin>
+    </include>
+
+  </world>
+</sdf>
