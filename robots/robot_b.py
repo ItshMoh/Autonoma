@@ -43,6 +43,13 @@ class RobotB:
             time.sleep(0.5)
         raise TimeoutError("No task assignment received")
 
+    def pickup_from_sender(self):
+        """Navigate to Robot A to pick up the package."""
+        print("[Robot B] Heading to Robot A for package pickup...")
+        gz_mover.navigate_b_to_a()
+        print("[Robot B] Arrived at Robot A. Package picked up!")
+        log_event("package_picked_up", carrier="robot_b", cargo=self.current_task["cargo"])
+
     def navigate_to_passage(self):
         """Move toward the narrow passage in Gazebo."""
         print("[Robot B] Navigating toward narrow passage...")
@@ -77,7 +84,6 @@ class RobotB:
                         payload = json.loads(msg["payload"])
                         if payload.get("type") == "yield_ack":
                             print("[Robot B] Robot C yielded! Passing through.")
-                            gz_mover.navigate_b_through_passage()
                             log_event("passage_cleared", winner="robot_b", yielder="robot_c")
                             return True
                     except json.JSONDecodeError:
@@ -87,9 +93,9 @@ class RobotB:
         return False
 
     def deliver_to_receiver(self, receiver_peer_id: str):
-        """Navigate to receiver and hand over the cargo."""
-        print("[Robot B] Navigating to receiver (Robot D)...")
-        gz_mover.navigate_b_to_d()
+        """Navigate through passage and to receiver."""
+        print("[Robot B] Passing through passage and heading to Robot D...")
+        gz_mover.navigate_b_through_and_to_d()
         print("[Robot B] Reached Robot D, initiating handover...")
 
         handover_msg = json.dumps({

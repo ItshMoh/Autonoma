@@ -11,7 +11,7 @@ from robots.shared.logger import log_event
 
 
 class RobotD:
-    def __init__(self, p2p_port: int = 8004):
+    def __init__(self, p2p_port: int = 8005):
         self.p2p = P2PClient(f"http://localhost:{p2p_port}")
         self.info = self.p2p.get_id()
         self.peer_id = self.info["peer_id"]
@@ -52,6 +52,6 @@ class RobotD:
         })
         self.p2p.publish(confirmation, topic="swarm")
         print("[Robot D] Delivery confirmation broadcast to swarm via Gossipsub")
-        log_event("gossipsub_broadcast", event="delivery_confirmed", receipt_hash=receipt_hash)
+        log_event("gossipsub_broadcast", broadcast_type="delivery_confirmed", receipt_hash=receipt_hash)
 
         return receipt_hash

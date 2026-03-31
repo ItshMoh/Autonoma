@@ -11,7 +11,7 @@ from robots.shared import gz_mover
 
 
 class RobotC:
-    def __init__(self, p2p_port: int = 8003):
+    def __init__(self, p2p_port: int = 8004):
         self.p2p = P2PClient(f"http://localhost:{p2p_port}")
         self.info = self.p2p.get_id()
         self.peer_id = self.info["peer_id"]
@@ -61,10 +61,7 @@ class RobotC:
                 winner_priority=their_priority,
                 outcome="C_yields",
             )
-            print("[Robot C] In yield zone. Waiting for passage to clear...")
-            time.sleep(3)
-            print("[Robot C] Passage clear. Resuming patrol.")
-            gz_mover.navigate_c_resume()
+            print("[Robot C] In yield zone. Staying put.")
             return {"action": "yielded", "to": payload["robot"]}
         else:
             print("[Robot C] My priority is equal or higher. Holding position.")
