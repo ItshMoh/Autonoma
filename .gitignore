@@ -1,2 +1,4 @@
 audit/node_modules
 venv/
+frontend/
+node_modules/

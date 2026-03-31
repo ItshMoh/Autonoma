@@ -2,6 +2,7 @@
   "name": "audit",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@filoz/synapse-sdk": "^0.40.0"
+    "@filoz/synapse-sdk": "^0.40.0",
+    "dotenv": "^17.3.1"
   }
 }

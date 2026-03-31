@@ -146,7 +146,7 @@ def follow_waypoints(robot_name: str, waypoints: list, speed: float = DRIVE_SPEE
 #      (broken into straight lines: left first, then down)
 
 PATH_B_TO_A = [
-    (-2.5, 3.0),       # straight left, stop next to A (not on top of it)
+    (-2.0, 3.0),       # straight left, stop next to A (not on top of it)
 ]
 
 PATH_B_TO_PASSAGE = [
@@ -156,7 +156,7 @@ PATH_B_TO_PASSAGE = [
 
 PATH_B_THROUGH_AND_TO_D = [
     (0.0, -3.0),       # straight down through gap, continue to y=-3
-    (2.0, -3.0),       # straight right to D
+    (1.0, -3.0),       # straight right, stop next to D (not on top of it)
 ]
 
 PATH_C_TO_PASSAGE = [
