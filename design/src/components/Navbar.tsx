@@ -16,7 +16,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Demo', 'Chat', 'Architecture'];
+  const navItems = ['Home', 'Demo', 'Architecture'];
 
   return (
     <motion.nav

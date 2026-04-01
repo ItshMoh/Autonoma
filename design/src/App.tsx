@@ -11,7 +11,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Process from './components/Process';
 import Demo from './components/Demo';
-import Chat from './components/Chat';
+// import Chat from './components/Chat';
 import Architecture from './components/Architecture';
 
 function AppContent() {
@@ -28,7 +28,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<><Hero /><Features /><Process /></>} />
           <Route path="/demo" element={<Demo />} />
-          <Route path="/chat" element={<Chat />} />
+          {/* <Route path="/chat" element={<Chat />} /> */}
           <Route path="/architecture" element={<Architecture />} />
         </Routes>
       </main>

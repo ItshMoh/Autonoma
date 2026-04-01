@@ -36,8 +36,8 @@ export default function Demo() {
           <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
             <iframe 
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/BOEAU1CCGyc" 
-              title="AUTONOMA Demo" 
+              src="https://www.youtube.com/embed/WXJL0_udqbY"
+              title="AUTONOMA - Decentralised Robotics Delivery" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               referrerPolicy="strict-origin-when-cross-origin" 
