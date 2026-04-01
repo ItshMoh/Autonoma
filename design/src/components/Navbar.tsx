@@ -46,9 +46,9 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <button className="bg-white text-black font-mono text-[11px] uppercase px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors font-bold">
-            Get Started
-          </button>
+          <a href="https://github.com/ItshMoh/Autonoma" target="_blank" rel="noopener noreferrer" className="bg-white text-black font-mono text-[11px] uppercase px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors font-bold">
+            GitHub
+          </a>
         </div>
 
         <button className="md:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -73,9 +73,9 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <button className="bg-white text-black font-mono text-xs uppercase px-6 py-3 rounded-full font-bold w-full">
-            Get Started
-          </button>
+          <a href="https://github.com/ItshMoh/Autonoma" target="_blank" rel="noopener noreferrer" className="bg-white text-black font-mono text-xs uppercase px-6 py-3 rounded-full font-bold w-full text-center block">
+            GitHub
+          </a>
         </div>
       )}
     </motion.nav>
