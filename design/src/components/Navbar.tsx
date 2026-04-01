@@ -37,7 +37,7 @@ export default function Navbar() {
               <Link 
                 key={item} 
                 to={path} 
-                className={`font-mono text-[11px] uppercase transition-colors ${isActive ? 'text-brand-orange' : 'text-white/50 hover:text-white'}`}
+                className={`font-mono text-base uppercase transition-colors ${isActive ? 'text-brand-orange' : 'text-white/50 hover:text-white'}`}
               >
                 {item}
               </Link>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@200;300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@200;300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -11,6 +11,11 @@
   --color-text: #f5f5f5;
   --color-muted: #888888;
   --color-stroke: #1f1f1f;
+
+  --color-robot-a: #F97316;
+  --color-robot-b: #3B82F6;
+  --color-robot-c: #9CA3AF;
+  --color-robot-d: #10B981;
 }
 
 body {
@@ -24,4 +29,12 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Excalidraw-like SVG styles */
+.excalidraw-path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
