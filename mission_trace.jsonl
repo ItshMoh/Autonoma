@@ -1,12 +1,17 @@
-{"event": "mission_start", "ts": 1774889213.103376, "cargo": "medical package", "priority": 3, "sender": "robot_a", "receiver": "robot_d", "description": "high priority medical package delivery"}
-{"event": "task_created", "ts": 1774889215.1235087, "sender": "robot_a", "receiver": "robot_d", "cargo": "medical package", "priority": 3, "description": "high priority medical package delivery"}
-{"event": "peer_discovered", "ts": 1774889215.1272323, "robot_a": "12D3KooWLqKhisEX8ZBE24JvLFcUDwm4pLrG9vZMPohZxsJSjg74", "carrier": "12D3KooWBu3ixFAWD8mVNBqYCzJAzrEWtvyHdFQGZyMbKec6GKVH"}
-{"event": "task_assigned", "ts": 1774889215.130131, "carrier": "12D3KooWBu3ixFAWD8mVNBqYCzJAzrEWtvyHdFQGZyMbKec6GKVH", "cargo": "medical package"}
-{"event": "task_accepted", "ts": 1774889215.1329975, "carrier": "12D3KooWBu3ixFAWD8mVNBqYCzJAzrEWtvyHdFQGZyMbKec6GKVH", "cargo": "medical package"}
-{"event": "reached_passage", "ts": 1774889223.3662112, "robot": "robot_b"}
-{"event": "narrow_passage_negotiation", "ts": 1774889223.8703442, "robot_b_priority": 3, "initiator": "robot_b"}
-{"event": "yield_decision", "ts": 1774889232.1907625, "yielder": "robot_c", "yielder_priority": 0, "winner": "robot_b", "winner_priority": 3, "outcome": "C_yields"}
-{"event": "passage_cleared", "ts": 1774889236.026239, "winner": "robot_b", "yielder": "robot_c"}
-{"event": "handover_sent", "ts": 1774889249.5426977, "carrier": "robot_b", "receiver": "robot_d", "cargo": "medical package"}
-{"event": "handover_received", "ts": 1774889249.9229844, "cargo": "medical package", "from_robot": "robot_b"}
-{"event": "receipt_signed", "ts": 1774889249.92339, "cargo": "medical package", "receipt_hash": "26f57617daf1ae6588c18b6e6b0ab89fccb0be38e5e65cd564695125c87c0be1", "signer": "robot_d"}
+{"event": "mission_start", "ts": 1774993686.564328, "cargo": "medical package", "priority": 3, "sender": "robot_a", "receiver": "robot_d", "description": "Send a high priority medical package from station A to station D"}
+{"event": "task_created", "ts": 1774993688.585584, "sender": "robot_a", "receiver": "robot_d", "cargo": "medical package", "priority": 3, "description": "Send a high priority medical package from station A to station D"}
+{"event": "peer_discovered", "ts": 1774993688.5906053, "robot_a": "12D3KooWMx3CrNFDc3PjAFsZyMzGw14LU4SysM1cgTxxZVFHL5vb", "carrier": "12D3KooWQnzVs6a6whPhUjuBSCh9p6tstavKUEuSbRsXfXJ4XRfU"}
+{"event": "task_assigned", "ts": 1774993688.5949655, "carrier": "12D3KooWQnzVs6a6whPhUjuBSCh9p6tstavKUEuSbRsXfXJ4XRfU", "cargo": "medical package"}
+{"event": "task_accepted", "ts": 1774993688.5989468, "carrier": "12D3KooWQnzVs6a6whPhUjuBSCh9p6tstavKUEuSbRsXfXJ4XRfU", "cargo": "medical package"}
+{"event": "package_picked_up", "ts": 1774993697.4780672, "carrier": "robot_b", "cargo": "medical package"}
+{"event": "reached_passage", "ts": 1774993713.7099576, "robot": "robot_b"}
+{"event": "narrow_passage_negotiation", "ts": 1774993713.7155187, "robot_b_priority": 3, "initiator": "robot_b"}
+{"event": "yield_decision", "ts": 1774993723.1212301, "yielder": "robot_c", "yielder_priority": 0, "winner": "robot_b", "winner_priority": 3, "outcome": "C_yields"}
+{"event": "passage_cleared", "ts": 1774993723.2886338, "winner": "robot_b", "yielder": "robot_c"}
+{"event": "handover_sent", "ts": 1774993740.926541, "carrier": "robot_b", "receiver": "robot_d", "cargo": "medical package"}
+{"event": "handover_received", "ts": 1774993741.4189942, "cargo": "medical package", "from_robot": "robot_b"}
+{"event": "receipt_signed", "ts": 1774993741.4199328, "cargo": "medical package", "receipt_hash": "7ecab7a70cd1a79be094c5ac48421987f18ab02549537916f92b6aa96498886f", "signer": "robot_d"}
+{"event": "gossipsub_broadcast", "ts": 1774993741.4275444, "broadcast_type": "delivery_confirmed", "receipt_hash": "7ecab7a70cd1a79be094c5ac48421987f18ab02549537916f92b6aa96498886f"}
+{"event": "delivery_confirmed_received", "ts": 1774993743.4316323, "type": "delivery_confirmed", "cargo": "medical package", "receipt_hash": "7ecab7a70cd1a79be094c5ac48421987f18ab02549537916f92b6aa96498886f", "receiver": "robot_d", "timestamp": 1774993741.4224894}
+{"event": "payment_triggered", "ts": 1774993751.014277, "tx_hash": "d2b8ee1534569f78c705b0b36d1e54b3f8770b7aa893a5a58006b053c2f48a06", "flowscan_url": "https://evm-testnet.flowscan.io/tx/0xd2b8ee1534569f78c705b0b36d1e54b3f8770b7aa893a5a58006b053c2f48a06", "amount": 10, "block": 102829638}
+{"event": "mission_complete", "ts": 1774993875.5480103, "cargo": "medical package", "receipt_hash": "7ecab7a70cd1a79be094c5ac48421987f18ab02549537916f92b6aa96498886f"}
