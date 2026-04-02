@@ -1,4 +1,4 @@
-# AUTONOMA
+# AUTONOMA 
 
 **Decentralized Robotic Delivery Protocol — Four Robots, Zero Servers, One Protocol.**
 
@@ -7,6 +7,8 @@ A peer-to-peer coordination and settlement layer for autonomous mobile robots. R
 See the Demo Here - https://www.youtube.com/watch?v=WXJL0_udqbY
 
 Here is the Website Link - https://autonoma-flax.vercel.app/
+
+Here is the Architecture Description - https://autonoma-flax.vercel.app/architecture
 
 ---
 
